@@ -80,6 +80,8 @@ dependencies {
 
     implementation "androidx.paging:paging-compose:$library.pagingCompose"
 
+    implementation 'com.prof18.rssparser:rssparser:5.0.0'
+
     implementation "io.coil-kt:coil-compose:$library.coil"
 
     debugImplementation "androidx.compose.ui:ui-tooling:$library.compose"

@@ -13,21 +13,25 @@ import javax.inject.Inject
 @HiltViewModel
 class FeedsViewModel @Inject constructor(
     private val feedLocalDatasource: FeedLocalDatasource
-): ViewModel() {
+) : ViewModel() {
 
     var state by mutableStateOf(FeedsScreenState())
-    private set
+        private set
 
-            init {
-                viewModelScope.launch {
-                    feedLocalDatasource.getFeedUrls().collect {
-                        state = state.copy(
-                            isLoading = false,
-                            feeds = it
-                        )
-                    }
-                }
+    init {
+        getFeedUrls()
+    }
+
+    private fun getFeedUrls() {
+        viewModelScope.launch {
+            feedLocalDatasource.getFeedUrls().collect {
+                state = state.copy(
+                    isLoading = false,
+                    feeds = it
+                )
             }
+        }
+    }
 }
 
 data class FeedsScreenState(
