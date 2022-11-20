@@ -1,4 +1,4 @@
-package sahraei.hamidreza.pheedly.feature.feeds.ui
+package sahraei.hamidreza.pheedly.feature.feeddetails.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,7 +9,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun FeedListScreen(
-    feedsViewModel: FeedsViewModel = hiltViewModel()
+    feedsViewModel: FeedDetailsViewModel = hiltViewModel()
 ) {
     val state = feedsViewModel.state
     when {
@@ -18,11 +18,13 @@ fun FeedListScreen(
                 CircularProgressIndicator()
             }
         }
-        state.feeds != null -> {
-            LazyColumn() {
-                state.feeds.forEach {
-                    item {
-                        Text(text = it)
+        state.articles != null -> {
+            LazyColumn {
+                state.articles.forEach {
+                    it.title?.let { title ->
+                        item {
+                            Text(text = title)
+                        }
                     }
                 }
             }

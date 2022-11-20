@@ -1,4 +1,4 @@
-package sahraei.hamidreza.pheedly.feature.feeds.ui
+package sahraei.hamidreza.pheedly.feature.feedlist.ui
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import sahraei.hamidreza.pheedly.feature.feeds.data.FeedLocalDatasource
+import sahraei.hamidreza.pheedly.feature.feedlist.data.FeedLocalDatasource
 import javax.inject.Inject
 
 @HiltViewModel

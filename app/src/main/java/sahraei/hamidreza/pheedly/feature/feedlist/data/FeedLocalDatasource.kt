@@ -1,4 +1,4 @@
-package sahraei.hamidreza.pheedly.feature.feeds.data
+package sahraei.hamidreza.pheedly.feature.feedlist.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
