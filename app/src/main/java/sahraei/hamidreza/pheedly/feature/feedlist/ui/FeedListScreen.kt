@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import sahraei.hamidreza.pheedly.common.PheedlyProgressItem
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
@@ -19,9 +20,7 @@ fun FeedListScreen(
     val state = feedsViewModel.state
     when {
         state.isLoading -> {
-            Box {
-                CircularProgressIndicator()
-            }
+            PheedlyProgressItem()
         }
         state.feeds != null -> {
             LazyColumn() {
