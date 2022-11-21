@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import sahraei.hamidreza.pheedly.feature.feeddetails.ui.FeedDetailsScreen
 import sahraei.hamidreza.pheedly.feature.feedlist.ui.FeedListScreen
 import sahraei.hamidreza.pheedly.navigation.Actions
 import sahraei.hamidreza.pheedly.navigation.Screen
@@ -44,10 +45,12 @@ fun PheedlyApp() {
                 startDestination = Screen.FeedList.route
             ) {
                 composable(Screen.FeedList.route) {
-                    FeedListScreen()
+                    FeedListScreen(
+                        onFeedClicked = actions.openFeedDetail
+                    )
                 }
                 composable( Screen.FeedDetail.route) {
-
+                    FeedDetailsScreen()
                 }
             }
         }
@@ -58,6 +61,8 @@ fun PheedlyApp() {
 @Composable
 fun DefaultPreview() {
     PheedlyTheme {
-        FeedListScreen()
+        FeedListScreen(
+            onFeedClicked = { println("On Feed $it Clicked")}
+        )
     }
 }

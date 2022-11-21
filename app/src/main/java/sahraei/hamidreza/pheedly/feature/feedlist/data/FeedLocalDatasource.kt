@@ -7,9 +7,14 @@ import javax.inject.Inject
 class FeedLocalDatasource @Inject constructor() {
 
     private val feedUrl = listOf(
-        "https://rss.art19.com/apology-line",
-        "http://rss.art19.com/the-daily",
-        "https://feeds.megaphone.fm/ADL9840290619"
+        "https://9gagrss.com/feed/",
+        "https://funnyjunk.com/rss/most_popular.rss",
+        "https://icanhas.cheezburger.com/rss",
+        "https://www.theonion.com/rss",
+        "https://www.sadanduseless.com/feed/",
+        "https://www.nasa.gov/rss/dyn/educationnews.rss",
+        "https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
+        "https://www.nasa.gov/rss/dyn/earth.rss",
     )
 
     fun getFeedUrls(): Flow<List<String>> {
