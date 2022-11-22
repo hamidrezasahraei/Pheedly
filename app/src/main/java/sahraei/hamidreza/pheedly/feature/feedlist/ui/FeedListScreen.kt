@@ -4,7 +4,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -16,7 +15,6 @@ import sahraei.hamidreza.pheedly.common.PheedlyProgressItem
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FeedListScreen(
     feedsViewModel: FeedsViewModel = hiltViewModel(),
@@ -40,8 +38,8 @@ fun FeedListScreen(
                 ) {
                     CardItem(
                         title = it
-                    ) { title ->
-                        val encodedUrl = URLEncoder.encode(title, StandardCharsets.UTF_8.toString())
+                    ) {
+                        val encodedUrl = URLEncoder.encode(it, StandardCharsets.UTF_8.toString())
                         onFeedClicked.invoke(encodedUrl)
                     }
                 }

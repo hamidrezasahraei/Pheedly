@@ -15,13 +15,13 @@ import sahraei.hamidreza.pheedly.ui.theme.Typography
 fun CardItem(
     modifier: Modifier = Modifier,
     title: String,
-    onCardClick: (String) -> Unit
+    onCardClick: () -> Unit
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
             .clickable {
-                onCardClick.invoke(title)
+                onCardClick.invoke()
             },
         elevation = 8.dp
     ) {

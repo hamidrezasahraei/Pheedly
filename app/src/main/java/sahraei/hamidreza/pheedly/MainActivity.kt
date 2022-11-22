@@ -16,8 +16,10 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import sahraei.hamidreza.pheedly.feature.feeddetails.ui.FeedDetailsScreen
 import sahraei.hamidreza.pheedly.feature.feedlist.ui.FeedListScreen
+import sahraei.hamidreza.pheedly.feature.webview.ui.WebviewScreen
 import sahraei.hamidreza.pheedly.navigation.Actions
 import sahraei.hamidreza.pheedly.navigation.Screen
+import sahraei.hamidreza.pheedly.navigation.Screen.Webview.WebviewArgs.Link
 import sahraei.hamidreza.pheedly.ui.theme.PheedlyTheme
 
 @AndroidEntryPoint
@@ -35,7 +37,6 @@ fun PheedlyApp() {
     val navController = rememberNavController()
     val actions = remember(navController) { Actions(navController) }
     PheedlyTheme {
-        // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
@@ -49,8 +50,16 @@ fun PheedlyApp() {
                         onFeedClicked = actions.openFeedDetail
                     )
                 }
-                composable( Screen.FeedDetail.route) {
-                    FeedDetailsScreen()
+                composable(Screen.FeedDetail.route) {
+                    FeedDetailsScreen(
+                        onFeedArticleClicked = actions.openWebview
+                    )
+                }
+                composable(Screen.Webview.route) {
+                    val link = it.arguments?.getString(Link)
+                    link?.let {
+                        WebviewScreen(link = link)
+                    }
                 }
             }
         }
@@ -62,7 +71,7 @@ fun PheedlyApp() {
 fun DefaultPreview() {
     PheedlyTheme {
         FeedListScreen(
-            onFeedClicked = { println("On Feed $it Clicked")}
+            onFeedClicked = { println("On Feed $it Clicked") }
         )
     }
 }
