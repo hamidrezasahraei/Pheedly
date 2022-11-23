@@ -1,4 +1,4 @@
-package sahraei.hamidreza.pheedly.common
+package sahraei.hamidreza.pheedly.common.compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

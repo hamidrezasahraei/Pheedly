@@ -1,4 +1,4 @@
-package sahraei.hamidreza.pheedly.common
+package sahraei.hamidreza.pheedly.common.compose
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
