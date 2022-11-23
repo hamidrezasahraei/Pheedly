@@ -10,7 +10,13 @@ class FeedLocalDatasource @Inject constructor(
     private val feedDao: FeedDao
 ) {
 
-    fun getFeedUrls(): Flow<List<FeedEntity>> {
+    suspend fun addFeed(url: String) {
+        feedDao.insert(
+            FeedEntity(url)
+        )
+    }
+
+    suspend fun getFeedUrls(): Flow<List<FeedEntity>> {
         return feedDao.getAll()
     }
 }

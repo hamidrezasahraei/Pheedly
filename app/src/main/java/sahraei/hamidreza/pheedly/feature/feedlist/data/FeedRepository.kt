@@ -13,12 +13,16 @@ class FeedRepository @Inject constructor(
     private val parser: Parser
 ) {
 
-    fun getFeeds(): Flow<List<String>> {
+    suspend fun getFeeds(): Flow<List<String>> {
         return feedLocalDatasource.getFeedUrls().map { feeds ->
             feeds.map {
                 it.link
             }
         }
+    }
+
+    suspend fun addFeed(url: String) {
+        feedLocalDatasource.addFeed(url)
     }
     suspend fun getFeedChannel(url: String): Flow<Channel> {
         return flow {

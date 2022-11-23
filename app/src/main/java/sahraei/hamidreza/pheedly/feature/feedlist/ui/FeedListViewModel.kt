@@ -31,9 +31,11 @@ class FeedsViewModel @Inject constructor(
                 urls.forEach { url ->
                     val job = launch {
                         feedRepository.getFeedChannel(url).collect { channel ->
-                            items.add(
-                                channel.toFeedItem(url)
-                            )
+                            if (channel.articles.isNotEmpty()) {
+                                items.add(
+                                    channel.toFeedItem(url)
+                                )
+                            }
                         }
                     }
                     job.join()
@@ -42,6 +44,14 @@ class FeedsViewModel @Inject constructor(
                     isLoading = false,
                     feeds = items
                 )
+            }
+        }
+    }
+
+    fun onAddFeedClicked(url: String) {
+        viewModelScope.launch {
+            if (url.isNotBlank()) {
+                feedRepository.addFeed(url)
             }
         }
     }

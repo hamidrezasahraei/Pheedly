@@ -1,6 +1,5 @@
 package sahraei.hamidreza.pheedly.feature.feedlist.ui
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,15 +12,19 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import sahraei.hamidreza.pheedly.common.compose.CardItem
 import sahraei.hamidreza.pheedly.common.compose.PheedlyProgressItem
 import sahraei.hamidreza.pheedly.common.compose.ScaffoldWithTopBar
+import sahraei.hamidreza.pheedly.common.compose.AddFeedDialog
 import sahraei.hamidreza.pheedly.feature.feedlist.model.FeedItem
 import sahraei.hamidreza.pheedly.ui.theme.LightGreys90
 import sahraei.hamidreza.pheedly.ui.theme.LightPheedly
@@ -41,7 +44,10 @@ fun FeedListScreen(
         state.feeds != null -> {
             FeedListSection(
                 feeds = state.feeds,
-                onFeedClicked = onFeedClicked
+                onFeedClicked = onFeedClicked,
+                onAddFeed = {
+                    feedsViewModel.onAddFeedClicked(it)
+                }
             )
         }
     }
@@ -50,8 +56,13 @@ fun FeedListScreen(
 @Composable
 fun FeedListSection(
     feeds: List<FeedItem>,
-    onFeedClicked: (feedLink: String) -> Unit
+    onFeedClicked: (feedLink: String) -> Unit,
+    onAddFeed: (url: String) -> Unit
 ) {
+    var openDialog by remember {
+        mutableStateOf(false)
+    }
+
     ScaffoldWithTopBar(title = "Feeds") {
         Box {
             LazyColumn(
@@ -70,7 +81,8 @@ fun FeedListSection(
                             subtitle = it.subtitle,
                             imageUrl = it.image
                         ) {
-                            val encodedUrl = URLEncoder.encode(it.link, StandardCharsets.UTF_8.toString())
+                            val encodedUrl =
+                                URLEncoder.encode(it.link, StandardCharsets.UTF_8.toString())
                             onFeedClicked.invoke(encodedUrl)
                         }
                     }
@@ -78,20 +90,34 @@ fun FeedListSection(
             }
 
             FloatingActionButton(
-                modifier = Modifier.align(Alignment.BottomEnd)
+                modifier = Modifier.align(Alignment.BottomEnd),
+                onFabClicked = {
+                    openDialog = true
+                }
             )
+        }
+    }
+
+    if (openDialog) {
+        AddFeedDialog(
+            onDismissRequest = {
+                openDialog = false
+            }
+        ) {
+            openDialog = false
+            onAddFeed.invoke(it)
         }
     }
 }
 
 @Composable
 fun FloatingActionButton(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onFabClicked: () -> Unit
 ) {
-    val ctx = LocalContext.current
     FloatingActionButton(
         onClick = {
-            Toast.makeText(ctx, "Simple Floating Action Button", Toast.LENGTH_SHORT).show()
+            onFabClicked.invoke()
         },
         backgroundColor = LightPheedly,
         contentColor = LightGreys90,
@@ -104,7 +130,7 @@ fun FloatingActionButton(
 
 @Preview
 @Composable
-fun FeedListPreview(){
+fun FeedListPreview() {
     FeedListSection(
         feeds = listOf(
             FeedItem(
@@ -113,6 +139,7 @@ fun FeedListPreview(){
                 link = "https://google.com"
             )
         ),
-        onFeedClicked = { println("On Feed Clicked!") }
+        onFeedClicked = { println("On Feed Clicked!") },
+        onAddFeed = { println("On Feed Clicked!") }
     )
 }
