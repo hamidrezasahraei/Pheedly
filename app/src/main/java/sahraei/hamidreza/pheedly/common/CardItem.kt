@@ -39,7 +39,7 @@ fun CardItem(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(16.dp)
+                .padding(8.dp)
         ) {
             if (!imageUrl.isNullOrEmpty()) {
                 AsyncImage(

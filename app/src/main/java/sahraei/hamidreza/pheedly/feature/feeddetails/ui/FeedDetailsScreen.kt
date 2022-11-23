@@ -34,11 +34,12 @@ fun FeedDetailsScreen(
             ) {
                 items(
                     items = state.articles,
-                    key = { it }
+                    key = { it.hashCode() }
                 ) {
                     it.title?.let { title ->
                         CardItem(
-                            title = title
+                            title = title,
+                            imageUrl = it.image
                         ) {
                             it.link?.let { link ->
                                 val encodedUrl = URLEncoder.encode(link, StandardCharsets.UTF_8.toString())
