@@ -38,7 +38,7 @@ fun FeedListScreen(
                     if (!it.title.isNullOrBlank()) {
                         CardItem(
                             title = it.title,
-                            subtitle = it.link,
+                            subtitle = it.subtitle,
                             imageUrl = it.image
                         ) {
                             val encodedUrl = URLEncoder.encode(it.link, StandardCharsets.UTF_8.toString())

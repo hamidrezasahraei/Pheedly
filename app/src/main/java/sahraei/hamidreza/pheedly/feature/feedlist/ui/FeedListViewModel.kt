@@ -28,11 +28,11 @@ class FeedsViewModel @Inject constructor(
         viewModelScope.launch {
             feedRepository.getFeeds().collect { urls ->
                 val items = mutableListOf<FeedItem>()
-                urls.forEach {
+                urls.forEach { url ->
                     val job = launch {
-                        feedRepository.getFeedChannel(it).collect { channel ->
+                        feedRepository.getFeedChannel(url).collect { channel ->
                             items.add(
-                                channel.toFeedItem()
+                                channel.toFeedItem(url)
                             )
                         }
                     }
