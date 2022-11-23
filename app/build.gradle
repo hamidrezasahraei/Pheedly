@@ -77,6 +77,7 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$library.navigation"
 
     implementation "androidx.room:room-runtime:$library.room"
+    implementation "androidx.room:room-ktx:$library.room"
     annotationProcessor "androidx.room:room-compiler:$library.room"
     kapt "androidx.room:room-compiler:$library.room"
 
