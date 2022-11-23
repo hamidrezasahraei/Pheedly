@@ -69,8 +69,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$library.appcompat"
     implementation "com.google.android.material:material:$library.material"
 
-    implementation "com.squareup.retrofit2:retrofit:$library.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$library.retrofit"
     implementation "com.squareup.okhttp3:okhttp:$library.okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$library.okhttp"
 
@@ -78,7 +76,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$library.navigation"
     implementation "androidx.navigation:navigation-compose:$library.navigation"
 
-    implementation "androidx.paging:paging-compose:$library.pagingCompose"
+    implementation "androidx.room:room-runtime:$library.room"
+    annotationProcessor "androidx.room:room-compiler:$library.room"
+    kapt "androidx.room:room-compiler:$library.room"
 
     implementation 'com.prof18.rssparser:rssparser:5.0.0'
 
