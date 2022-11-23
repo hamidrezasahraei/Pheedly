@@ -8,6 +8,7 @@ import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
 @Module
@@ -23,5 +24,11 @@ object RSSModule {
             .context(context)
             .cacheExpirationMillis(TimeUnit.HOURS.toMillis(2))
             .build()
+    }
+
+    @Provides
+    @Reusable
+    fun provideOkHttp(): OkHttpClient {
+        return OkHttpClient.Builder().build()
     }
 }

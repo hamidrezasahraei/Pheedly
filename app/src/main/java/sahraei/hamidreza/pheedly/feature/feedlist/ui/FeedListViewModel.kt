@@ -7,27 +7,40 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import sahraei.hamidreza.pheedly.feature.feedlist.data.FeedLocalDatasource
+import sahraei.hamidreza.pheedly.feature.feedlist.data.FeedRepository
+import sahraei.hamidreza.pheedly.feature.feedlist.model.FeedItem
+import sahraei.hamidreza.pheedly.feature.feedlist.model.toFeedItem
 import javax.inject.Inject
 
 @HiltViewModel
 class FeedsViewModel @Inject constructor(
-    private val feedLocalDatasource: FeedLocalDatasource
+    private val feedRepository: FeedRepository
 ) : ViewModel() {
 
     var state by mutableStateOf(FeedsScreenState())
         private set
 
     init {
-        getFeedUrls()
+        getFeeds()
     }
 
-    private fun getFeedUrls() {
+    private fun getFeeds() {
         viewModelScope.launch {
-            feedLocalDatasource.getFeedUrls().collect {
+            feedRepository.getFeeds().collect { urls ->
+                val items = mutableListOf<FeedItem>()
+                urls.forEach {
+                    val job = launch {
+                        feedRepository.getFeedChannel(it).collect { channel ->
+                            items.add(
+                                channel.toFeedItem()
+                            )
+                        }
+                    }
+                    job.join()
+                }
                 state = state.copy(
                     isLoading = false,
-                    feeds = it
+                    feeds = items
                 )
             }
         }
@@ -35,6 +48,6 @@ class FeedsViewModel @Inject constructor(
 }
 
 data class FeedsScreenState(
-    val isLoading: Boolean = false,
-    val feeds: List<String>? = null
+    val isLoading: Boolean = true,
+    val feeds: List<FeedItem>? = null
 )

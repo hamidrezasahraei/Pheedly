@@ -8,7 +8,6 @@ class FeedLocalDatasource @Inject constructor() {
 
     private val feedUrl = listOf(
         "https://9gagrss.com/feed/",
-        "https://funnyjunk.com/rss/most_popular.rss",
         "https://icanhas.cheezburger.com/rss",
         "https://www.theonion.com/rss",
         "https://www.sadanduseless.com/feed/",

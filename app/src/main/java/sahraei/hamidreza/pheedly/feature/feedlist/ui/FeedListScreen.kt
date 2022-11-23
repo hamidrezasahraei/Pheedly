@@ -1,6 +1,5 @@
 package sahraei.hamidreza.pheedly.feature.feedlist.ui
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,13 +33,17 @@ fun FeedListScreen(
             ) {
                 items(
                     items = state.feeds,
-                    key = { it }
+                    key = { it.hashCode() }
                 ) {
-                    CardItem(
-                        title = it
-                    ) {
-                        val encodedUrl = URLEncoder.encode(it, StandardCharsets.UTF_8.toString())
-                        onFeedClicked.invoke(encodedUrl)
+                    if (!it.title.isNullOrBlank()) {
+                        CardItem(
+                            title = it.title,
+                            subtitle = it.link,
+                            imageUrl = it.image
+                        ) {
+                            val encodedUrl = URLEncoder.encode(it.link, StandardCharsets.UTF_8.toString())
+                            onFeedClicked.invoke(encodedUrl)
+                        }
                     }
                 }
             }

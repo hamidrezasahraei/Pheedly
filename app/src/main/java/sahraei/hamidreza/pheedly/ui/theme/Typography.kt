@@ -12,13 +12,13 @@ val Typography = Typography(
     body1 = TextStyle(
         fontFamily = FontFamily.Monospace,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         color = LightGreys90
     ),
     body2 = TextStyle(
         fontFamily = FontFamily.Monospace,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         color = LightGreys10
     ),
     h1 = TextStyle(
@@ -37,14 +37,14 @@ val Typography = Typography(
         color = LightGreys90,
         fontFamily = FontFamily.Monospace,
         fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
+        fontSize = 14.sp,
         letterSpacing = 0.15.sp
     ),
     subtitle2 = TextStyle(
         color = LightGreys90,
         fontFamily = FontFamily.Monospace,
         fontWeight = FontWeight.Medium,
-        fontSize = 14.sp,
+        fontSize = 12.sp,
         letterSpacing = 0.15.sp
     ),
     caption = TextStyle(
