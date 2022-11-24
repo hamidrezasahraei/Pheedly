@@ -29,7 +29,9 @@ fun ScaffoldWithTopBar(
                         color = LightGreys90
                     )
                 })
-        }) {
+        },
+        backgroundColor = MaterialTheme.colors.primary
+    ) {
         content.invoke()
     }
 }

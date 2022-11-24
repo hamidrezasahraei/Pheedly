@@ -21,10 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import sahraei.hamidreza.pheedly.common.compose.AddFeedDialog
 import sahraei.hamidreza.pheedly.common.compose.CardItem
 import sahraei.hamidreza.pheedly.common.compose.PheedlyProgressItem
 import sahraei.hamidreza.pheedly.common.compose.ScaffoldWithTopBar
-import sahraei.hamidreza.pheedly.common.compose.AddFeedDialog
 import sahraei.hamidreza.pheedly.feature.feedlist.model.FeedItem
 import sahraei.hamidreza.pheedly.ui.theme.LightGreys90
 import sahraei.hamidreza.pheedly.ui.theme.LightPheedly
