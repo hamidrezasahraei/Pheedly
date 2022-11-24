@@ -25,8 +25,9 @@ class FeedRepository @Inject constructor(
         feedLocalDatasource.addFeed(url)
     }
     suspend fun getFeedChannel(url: String): Flow<Channel> {
+        val channel = parser.getChannel(url)
         return flow {
-            emit(parser.getChannel(url))
+            emit(channel)
         }
     }
 }

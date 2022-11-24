@@ -18,7 +18,8 @@ ext {
             webview      : '1.4.0',
             compose      : '1.2.0-beta03',
             pagingCompose: '1.0.0-alpha14',
-            coil         : '2.1.0'
+            coil         : '2.1.0',
+            mockito      : '4.0.0'
     ]
 
     build = [

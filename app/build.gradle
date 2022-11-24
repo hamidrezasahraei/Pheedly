@@ -92,4 +92,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$library.compose"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$library.compose"
+    testImplementation "org.mockito:mockito-core:$library.mockito"
+    testImplementation "org.mockito:mockito-inline:$library.mockito"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$library.mockito"
 }
