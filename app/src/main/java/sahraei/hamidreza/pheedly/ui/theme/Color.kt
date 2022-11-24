@@ -2,7 +2,7 @@ package sahraei.hamidreza.pheedly.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val LightPheedly = Color(0xFFE9CE01)
+val LightPheedly = Color(0xFFFE7C28)
 val LightGreys90 = Color(0xFF20222A)
 val LightGreys70 = Color(0xFF717485)
 val LightGreys40 = Color(0xFFE5E7F0)
