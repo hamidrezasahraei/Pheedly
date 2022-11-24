@@ -5,7 +5,7 @@ A RSS feed reader android application implemented entirely with Jetpack Compose,
 
 
 ## Tech Stack
-Jetpack Compose, Hilt, MVVM, Coroutines and Flow, Navigation and Navigation Compose, Unit Tests with Mockito
+Jetpack Compose, Hilt, MVVM, Coroutines and Flow, Navigation and Navigation Compose, Room, Unit Tests with Mockito
 
 ## Features
 
