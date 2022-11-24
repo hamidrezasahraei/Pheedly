@@ -19,7 +19,8 @@ ext {
             compose      : '1.2.0-beta03',
             pagingCompose: '1.0.0-alpha14',
             coil         : '2.1.0',
-            mockito      : '4.0.0'
+            mockito      : '4.0.0',
+            coroutineTest: '1.6.4'
     ]
 
     build = [

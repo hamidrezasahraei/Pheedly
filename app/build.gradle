@@ -95,4 +95,5 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$library.mockito"
     testImplementation "org.mockito:mockito-inline:$library.mockito"
     testImplementation "org.mockito.kotlin:mockito-kotlin:$library.mockito"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$library.coroutineTest"
 }

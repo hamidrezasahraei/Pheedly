@@ -24,7 +24,7 @@ class FeedsViewModel @Inject constructor(
         getFeeds()
     }
 
-    private fun getFeeds() {
+    fun getFeeds() {
         viewModelScope.launch {
             feedRepository.getFeeds().collect { urls ->
                 val items = mutableListOf<FeedItem>()
