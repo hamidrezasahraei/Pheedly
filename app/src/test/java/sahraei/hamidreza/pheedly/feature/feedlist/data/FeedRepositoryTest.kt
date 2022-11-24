@@ -33,20 +33,20 @@ class FeedRepositoryTest {
     }
 
     @Test
-    fun should_return_feed_urls_from_localdatasource() {
+    fun `should return feed urls from localdatasource`() {
         runBlocking { feedRepository.getFeeds() }
         verifyBlocking(feedLocalDatasource) { getFeedUrls() }
     }
 
     @Test
-    fun should_return_feed_channel_from_url() {
+    fun `should return feed channel from url`() {
         val url = "https://google.com"
         runBlocking { feedRepository.getFeedChannel(url) }
         verifyBlocking(parser) { getChannel(url) }
     }
 
     @Test
-    fun should_add_channel_by_url() {
+    fun `should add channel by url`() {
         val url = "https://google.com"
         runBlocking { feedRepository.addFeed(url) }
         verifyBlocking(feedLocalDatasource) { addFeed(url) }
