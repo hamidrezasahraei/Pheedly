@@ -2,6 +2,7 @@ package sahraei.hamidreza.pheedly.rule
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineScheduler
 import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -11,7 +12,7 @@ import org.junit.runner.Description
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class CoroutineTestRule(
-    private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(),
+    val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(testScheduler),
 ) : TestWatcher() {
 
     override fun starting(description: Description) {
@@ -24,3 +25,6 @@ class CoroutineTestRule(
         Dispatchers.resetMain()
     }
 }
+
+@OptIn(ExperimentalCoroutinesApi::class)
+val testScheduler = TestCoroutineScheduler()

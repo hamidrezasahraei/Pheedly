@@ -29,16 +29,13 @@ class FeedsViewModel @Inject constructor(
             feedRepository.getFeeds().collect { urls ->
                 val items = mutableListOf<FeedItem>()
                 urls.forEach { url ->
-                    val job = launch {
-                        feedRepository.getFeedChannel(url).collect { channel ->
-                            if (channel.articles.isNotEmpty()) {
-                                items.add(
-                                    channel.toFeedItem(url)
-                                )
-                            }
+                    feedRepository.getFeedChannel(url).collect { channel ->
+                        if (channel.articles.isNotEmpty()) {
+                            items.add(
+                                channel.toFeedItem(url)
+                            )
                         }
                     }
-                    job.join()
                 }
                 state = state.copy(
                     isLoading = false,
