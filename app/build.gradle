@@ -16,7 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "sahraei.hamidreza.pheedly.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -91,10 +91,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$library.compose"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$library.hilt"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$library.compose"
     testImplementation "org.mockito:mockito-core:$library.mockito"
     testImplementation "org.mockito:mockito-inline:$library.mockito"
     testImplementation "org.mockito.kotlin:mockito-kotlin:$library.mockito"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$library.coroutineTest"
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$library.hilt"
 }

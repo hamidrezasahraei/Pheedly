@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -90,7 +91,10 @@ fun FeedListSection(
             }
 
             FloatingActionButton(
-                modifier = Modifier.align(Alignment.BottomEnd),
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .testTag(AddFeedFab)
+                ,
                 onFabClicked = {
                     openDialog = true
                 }
@@ -143,3 +147,5 @@ fun FeedListPreview() {
         onAddFeed = { println("On Feed Clicked!") }
     )
 }
+
+const val AddFeedFab = "AddFeedFab"
