@@ -1,11 +1,18 @@
 
 # Pheedly
 
-A RSS feed reader android application implemented entirely with Jetpack Compose, Simple, easy to use and also supports the dark theme.
-
+A RSS feed reader android application implemented entirely with Jetpack Compose which has some Unit tests, UI tests and also dark theme support.
 
 ## Tech Stack
-Jetpack Compose, Hilt, MVVM, Coroutines and Flow, Navigation and Navigation Compose, Room, Unit Tests with Mockito
+
+- Jetpack Compose
+- Hilt
+- MVVM
+- Coroutines and Flow
+- Navigation Compose
+- Room
+- Unit Tests with Mockito
+- UI Test
 
 ## Features
 
